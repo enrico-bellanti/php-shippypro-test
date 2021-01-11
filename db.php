@@ -53,9 +53,19 @@ $flights = [
         'price' => 22.89
     ],
     [
+        'code_departure' => 1784, //fco
+        'code_arrival' => 5986, // cia
+        'price' => 8.89
+    ],
+    [
+        'code_departure' => 5986, //cia
+        'code_arrival' => 6501, // torino
+        'price' => 29.89
+    ],
+    [
         'code_departure' => 4512, //malpensa
         'code_arrival' => 6501, //torino
-        'price' => 12.89
+        'price' => 13.89
     ],
     [
         'code_departure' => 6501, //torino
