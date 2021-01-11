@@ -29,7 +29,6 @@ $arrival =
 // get departure and arrival ap code
 $dep_ap_code = getCodeAp($departure['lat'], $departure['lng'], $airports);
 $arr_ap_code = getCodeAp($arrival['lat'], $arrival['lng'], $airports);
-var_dump($dep_ap_code);
 
 // get all flights which match with dep choice and arr choice
 // put the rest of flights which match only with arrival choice in another array to be filtered later
