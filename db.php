@@ -17,14 +17,14 @@ $airports = [
     ],
     [
         'id' => 3,
-        'name' => 'Malpensa',
+        'name' => 'Malpensa-Milano',
         'code' => 4512,
         'lat' => 40.10,
         'lng' => 10.12
     ],
     [
         'id' => 4,
-        'name' => 'Caselle',
+        'name' => 'Caselle-Torino',
         'code' => 6501,
         'lat' => 44.10,
         'lng' => 11.12

@@ -1,6 +1,6 @@
 <?php 
 
-// include the database - as making a query from db
+// include the database - as making a query from db for example...
 include "db.php";
 
 // function to get ap code
@@ -30,11 +30,12 @@ $arrival =
 $dep_ap_code = getCodeAp($departure['lat'], $departure['lng'], $airports);
 $arr_ap_code = getCodeAp($arrival['lat'], $arrival['lng'], $airports);
 
-// get all flights which match with dep choice and arr choice
-// put the rest of flights which match only with arrival choice in another array to be filtered later
+// get all flights which match with departure choice and arrival choice
 $direct_flights = [];
+// put the rest of flights which match only with arrival choice in another array to be filtered later
 $arr_flights = [];
-$rest_dep_flights = [];
+// put the rest of flights in another array to be filtered later
+$rest_flights = [];
 
 foreach ($flights as $flight) {
     if ($flight['code_departure'] == $dep_ap_code && $flight['code_arrival'] == $arr_ap_code) {
@@ -47,6 +48,7 @@ foreach ($flights as $flight) {
 }
 
 // get all stopovers which match with arr code and dep code
+// and mix the two flights infos
 $stopover_flights = [];
 
 foreach ($arr_flights as $second_flight) {
@@ -69,6 +71,8 @@ foreach ($arr_flights as $second_flight) {
 // merge arrays with direct flights list and stopover
 $results = array_merge($direct_flights, $stopover_flights);
 
+
+// calculate the lowest price
 $i = 0;
 $lowest_res = 0;
 foreach ($results as $res) {
@@ -80,7 +84,6 @@ foreach ($results as $res) {
     $i++;
 }
 
-// show lowest price in debug
 var_dump($lowest_res);
 
 ?>
