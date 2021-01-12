@@ -53,7 +53,7 @@ $stopover_flights = [];
 
 foreach ($arr_flights as $second_flight) {
     foreach ($dep_flights as $first_flight) {
-        if ($dep_ap_code && $first_flight['code_arrival'] == $second_flight['code_departure']) {
+        if ($first_flight['code_arrival'] == $second_flight['code_departure']) {
             $context_not_direct_flight=
                 [
                     'code_departure' => $dep_ap_code, 
