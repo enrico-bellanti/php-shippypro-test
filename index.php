@@ -34,16 +34,16 @@ $arr_ap_code = getCodeAp($arrival['lat'], $arrival['lng'], $airports);
 $direct_flights = [];
 // put the rest of flights which match only with arrival choice in another array to be filtered later
 $arr_flights = [];
-// put the rest of flights in another array to be filtered later
-$rest_flights = [];
+// put the rest of flights which match only with departure choice in another array to be filtered later
+$dep_flights = [];
 
 foreach ($flights as $flight) {
     if ($flight['code_departure'] == $dep_ap_code && $flight['code_arrival'] == $arr_ap_code) {
         $direct_flights[] = $flight;
     } elseif ($flight['code_arrival'] == $arr_ap_code) {
         $arr_flights[] = $flight;
-    } else {
-        $rest_flights[] = $flight;
+    } elseif ($flight['code_departure'] == $dep_ap_code) {
+        $dep_flights[] = $flight;
     }
 }
 
@@ -52,8 +52,8 @@ foreach ($flights as $flight) {
 $stopover_flights = [];
 
 foreach ($arr_flights as $second_flight) {
-    foreach ($rest_flights as $first_flight) {
-        if ($first_flight['code_departure'] == $dep_ap_code && $first_flight['code_arrival'] == $second_flight['code_departure']) {
+    foreach ($dep_flights as $first_flight) {
+        if ($dep_ap_code && $first_flight['code_arrival'] == $second_flight['code_departure']) {
             $context_not_direct_flight=
                 [
                     'code_departure' => $dep_ap_code, 
